@@ -1,0 +1,27 @@
+services:
+  subscription-manager_app:
+    container_name: subscription-manager_app
+    image: hizam/subscription-manager_app:1.0.0
+    build: .
+    ports:
+      - '8080:8080'
+    environment:
+        DATABASE_URL: jdbc:postgresql://db:5432/subscription-manager
+        DATABASE_USERNAME: postgres
+        DATABASE_PASSWORD: 1
+    depends_on:
+      - db
+
+  db:
+    container_name: db
+    image: postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 1
+      POSTGRES_DB: subscription-manager
+    ports:
+    - '5333:5432'
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+volumes:
+  pgdata: {}
