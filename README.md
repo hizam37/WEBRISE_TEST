@@ -4,40 +4,47 @@
 
 # Решение
 ## Первый шаг : 
-Созданим базы данных в Postgres через Docker
-
-(Код находится в docker compose)
-
+Создание базы данных в PostgreSQL с использованием Docker
+(Код содержится в файле docker-compose.yml)
 ## Воторой шаг :
-Создадим таблицы с помощью аннотация Entity Users(id,firstName,lastName,email,password,phoneNumber,
-role) с имплементация UserDetails (Код находится в исходном файле) Subscription (id,digitalServiceName,subscriberId) (Код находится в исходном файле)
+Создание таблиц с использованием аннотаций Entity:
+
+Users (id, firstName, lastName, email, password, phoneNumber, role) с реализацией UserDetails
+
+Subscription (id, digitalServiceName, subscriberId)
+(Исходный код доступен в соответствующих файлах)
 
 ## Третий шаг :
-Конфигируем spring boot с Postgres через application.yml (Код находится в исходном файле)
+Настройка подключения Spring Boot к PostgreSQL через application.yml
+(Конфигурация в файле application.yml)
 
 ## Четвертый шаг :
-Созданим Система CREAD (Код находится в исходном файле)
+Реализация CRUD-функционала (Код находится в исходном файле)
 
 ## Пятый шаг :
-Созданим зашиненный система с помощью spring security 
+Настройка системы безопасности с использованием Spring Security
 
 ## Шестой шаг :
-Создадим контроллера аутентификации и контроллера подписка для работы с api
+Создание контроллеров:
+
+Контроллер аутентификации
+
+Контроллер подписок
 
 ## Седмой шаг :
-Создадим api спецификация с помощью springdoc и swagger-ui
-
-(Код находится в docker compose)
-
+Генерация API-документации с использованием SpringDoc и Swagger UI
+(Конфигурация в docker-compose.yml)
 ## Восмой шаг :
-генирируем jsonfile для api спецификации и jar file 
-с помощью mvn clean package 
+Генерация JSON-файла спецификации API и JAR-файла:
+mvn clean package 
 
 ## Девятий шаг :
-запускаем docker compose при использования комманда docker compose up 
+Запуск системы:
+docker compose up 
 
 # Демонстрация
-Регистрауия пользователя с использованием запрос POST через 
+Регистрация пользователя
+POST-запрос:
 ```
 http://localhost:8090/api/v1/auth/register
 ```
@@ -64,7 +71,8 @@ http://localhost:8090/api/v1/auth/register
 }
 ```
 
-Вход в системе с использованием запрос POST через 
+Авторизация
+POST-запрос:
 ```
 http://localhost:8080/api/v1/auth/login
 ```
@@ -76,17 +84,20 @@ http://localhost:8080/api/v1/auth/login
 }
 ```
 
-Добавления цифровой сервис в качества параметр с использованием запрос POST 
+Добавление цифрового сервиса
+POST-запрос:
 ```
 http://127.0.0.1:8080/api/v1/auth/login/add_sub_service/{digitalServiceName}
 ```
 
-Подписка на цифровой сервис в качества параметр с использованием запрос POST 
+Подписка на сервис
+POST-запрос:
 ```
 http://localhost:8080/api/v1/auth/login/subscribe/{digitalServiceName}"
 ```
 
-Редактирования информация пользователя с использованием запрос PUT
+Редактирование профиля
+PUT-запрос:
 ```
 http://localhost:8080/api/v1/auth/login/edit_my_info
 ```
@@ -98,29 +109,31 @@ http://localhost:8080/api/v1/auth/login/edit_my_info
 }
 ```
 
-отображение списка подписок пользователяв с использованием запрос GET
+Просмотр подписок
 ```
 http://localhost:8080/api/v1/auth/login/display_my_subscribed_services
 ```
 
-отображение информация пользователя по email с использованием запрос GET
+Просмотр информации о пользователе
 ```
 http://localhost:8080/api/v1/auth/login/view_user_info_by_email/{email}
 ```
 
-Удаление пользователя по почта с использованием запрос DELETE
-
+Удаление пользователя
+DELETE-запрос:
 ```
 http://localhost:8080/api/v1/auth/login/delete_by_email/{email}
 ```
 
-Удаление подписка с использованием запрос PUT
+Отписка от сервиса
+PUT-запрос:
 
 ```
 http://localhost:8080/api/v1/auth/login/unsubscribe/{service_name}
 ```
 
-Удаление подписки с использованием запрос PUT
+Отписка от всех сервисов
+PUT-запрос:
 
 ```
 http://localhost:8080/api/v1/auth/login/unsubscribe_from_all_services
