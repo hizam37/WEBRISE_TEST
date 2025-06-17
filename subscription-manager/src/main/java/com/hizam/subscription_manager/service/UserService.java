@@ -13,8 +13,9 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import java.util.*;
-import java.util.stream.Collectors;
+import java.util.Arrays;
+import java.util.Objects;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -77,20 +78,6 @@ public class UserService {
                 .orElseThrow(() -> new UsernameNotFoundException("User not found"));
         userRepository.delete(user);
     }
-
-
-    public List<UserInfoDto> getAllUsers()
-    {
-        List<User> users = userRepository.findAll();
-        if(users.isEmpty())
-        {
-           throw new UsernameNotFoundException("User not found");
-        }else {
-            return users.stream().map(user -> mapper.map(user,UserInfoDto.class)).collect(Collectors.toList());
-        }
-    }
-
-
 
 
 

@@ -53,11 +53,6 @@ public class SubController {
         return userService.getRegisteredUserInfoByEmail(email);
     }
 
-    @GetMapping("/view_all_users")
-    @PreAuthorize("hasRole('ROLE_MANAGER')")
-    public List<UserInfoDto> getAllUsers() {
-        return userService.getAllUsers();
-    }
 
 
     @DeleteMapping("/delete_by_email/{email}")

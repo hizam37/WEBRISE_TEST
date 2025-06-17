@@ -9,7 +9,6 @@ import org.springframework.context.annotation.Bean;
 import static org.modelmapper.config.Configuration.AccessLevel.PRIVATE;
 
 @SpringBootApplication
-
 public class SubscriptionManagerApplication {
 
 	public static void main(String[] args) {
